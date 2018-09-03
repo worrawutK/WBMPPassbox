@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="DBtestConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBtestConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CheckPassBoxMP.My.MySettings.GlobalReference.Default.DBtestConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="DBxConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBxConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CheckPassBoxMP.My.MySettings.GlobalReference.Default.DBxConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WBMPPassboxTableAdapter" GeneratorDataComponentClassName="WBMPPassboxTableAdapter" Name="WBMPPassbox" UserDataComponentName="WBMPPassboxTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (50) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
+                         WBMPPassbox.OPNoOut, WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
+FROM            TransactionData INNER JOIN
+                         WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
+ORDER BY WBMPPassbox.LotStartTime DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="LotNo" DataSetColumn="LotNo" />
+              <Mapping SourceColumn="LotStartTime" DataSetColumn="LotStartTime" />
+              <Mapping SourceColumn="OPNoIn" DataSetColumn="OPNoIn" />
+              <Mapping SourceColumn="OPNoOut" DataSetColumn="OPNoOut" />
+              <Mapping SourceColumn="LotEndTime" DataSetColumn="LotEndTime" />
+              <Mapping SourceColumn="ChannelNumber" DataSetColumn="ChannelNumber" />
+              <Mapping SourceColumn="Remark" DataSetColumn="Remark" />
+              <Mapping SourceColumn="Package" DataSetColumn="Package" />
+              <Mapping SourceColumn="Device" DataSetColumn="Device" />
+              <Mapping SourceColumn="MCNo" DataSetColumn="MCNo" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDataINBox" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="FillDataINBox" GetMethodModifier="Public" GetMethodName="GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillDataINBox">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (50) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
+                         WBMPPassbox.OPNoOut, WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
+FROM            TransactionData INNER JOIN
+                         WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
+WHERE        (WBMPPassbox.MCNo = @MCNo) AND (WBMPPassbox.LotEndTime IS NULL)
+ORDER BY WBMPPassbox.LotStartTime DESC</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="MCNo" ColumnName="MCNo" DataSourceName="DBx.dbo.WBMPPassbox" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@MCNo" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="MCNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillLotNo" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillLotNo" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillLotNo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (200) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
+                         WBMPPassbox.OPNoOut, WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
+FROM            TransactionData INNER JOIN
+                         WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
+WHERE        (WBMPPassbox.LotNo = @LotNo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="LotNo" ColumnName="LotNo" DataSourceName="DBx.dbo.WBMPPassbox" DataTypeServer="varchar(15)" DbType="AnsiString" Direction="Input" ParameterName="@LotNo" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumn="LotNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillLotNostart" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="FillLotNostart" GetMethodModifier="Public" GetMethodName="GetDataBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillLotNostart">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT TOP(50000)       WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, WBMPPassbox.OPNoOut, 
+                         WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
+FROM            TransactionData INNER JOIN
+                         WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
+WHERE        (WBMPPassbox.LotStartTime &gt;= @LotNoStart) AND  (WBMPPassbox.LotStartTime &lt;= @LotNoEnd)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="LotNoStart" ColumnName="LotStartTime" DataSourceName="DBx.dbo.WBMPPassbox" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@LotNoStart" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="LotNoEnd" ColumnName="LotStartTime" DataSourceName="DBx.dbo.WBMPPassbox" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@LotNoEnd" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="LotStartTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillPKG" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillPKG" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillPKG">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP (200) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
+                         WBMPPassbox.OPNoOut, WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
+FROM            TransactionData INNER JOIN
+                         WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
+WHERE        (TransactionData.Package = @Package)
+ORDER BY WBMPPassbox.LotStartTime DESC</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="Package" ColumnName="Package" DataSourceName="DBx.dbo.TransactionData" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@Package" Precision="0" ProviderType="VarChar" Scale="0" Size="10" SourceColumn="Package" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="WBMPPassbox" msprop:Generator_TableClassName="WBMPPassboxDataTable" msprop:Generator_TableVarName="tableWBMPPassbox" msprop:Generator_RowChangedName="WBMPPassboxRowChanged" msprop:Generator_TablePropName="WBMPPassbox" msprop:Generator_RowDeletingName="WBMPPassboxRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxRowDeleted" msprop:Generator_RowClassName="WBMPPassboxRow" msprop:Generator_UserTableName="WBMPPassbox" msprop:Generator_RowEvArgName="WBMPPassboxRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LotNo" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="LotNo" msprop:Generator_ColumnVarNameInTable="columnLotNo" msprop:Generator_ColumnPropNameInTable="LotNoColumn" msprop:Generator_UserColumnName="LotNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LotStartTime" msprop:Generator_ColumnVarNameInTable="columnLotStartTime" msprop:Generator_ColumnPropNameInRow="LotStartTime" msprop:Generator_ColumnPropNameInTable="LotStartTimeColumn" msprop:Generator_UserColumnName="LotStartTime" type="xs:dateTime" />
+              <xs:element name="OPNoIn" msprop:Generator_ColumnVarNameInTable="columnOPNoIn" msprop:Generator_ColumnPropNameInRow="OPNoIn" msprop:Generator_ColumnPropNameInTable="OPNoInColumn" msprop:Generator_UserColumnName="OPNoIn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OPNoOut" msprop:Generator_ColumnVarNameInTable="columnOPNoOut" msprop:Generator_ColumnPropNameInRow="OPNoOut" msprop:Generator_ColumnPropNameInTable="OPNoOutColumn" msprop:Generator_UserColumnName="OPNoOut" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LotEndTime" msprop:Generator_ColumnVarNameInTable="columnLotEndTime" msprop:Generator_ColumnPropNameInRow="LotEndTime" msprop:Generator_ColumnPropNameInTable="LotEndTimeColumn" msprop:Generator_UserColumnName="LotEndTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ChannelNumber" msprop:Generator_ColumnVarNameInTable="columnChannelNumber" msprop:Generator_ColumnPropNameInRow="ChannelNumber" msprop:Generator_ColumnPropNameInTable="ChannelNumberColumn" msprop:Generator_UserColumnName="ChannelNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Package" msprop:Generator_ColumnVarNameInTable="columnPackage" msprop:Generator_ColumnPropNameInRow="Package" msprop:Generator_ColumnPropNameInTable="PackageColumn" msprop:Generator_UserColumnName="Package" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Device" msprop:Generator_ColumnVarNameInTable="columnDevice" msprop:Generator_ColumnPropNameInRow="Device" msprop:Generator_ColumnPropNameInTable="DeviceColumn" msprop:Generator_UserColumnName="Device" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MCNo" msprop:Generator_ColumnVarNameInTable="columnMCNo" msprop:Generator_ColumnPropNameInRow="MCNo" msprop:Generator_ColumnPropNameInTable="MCNoColumn" msprop:Generator_UserColumnName="MCNo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:WBMPPassbox" />
+      <xs:field xpath="mstns:LotNo" />
+      <xs:field xpath="mstns:LotStartTime" />
+      <xs:field xpath="mstns:MCNo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
