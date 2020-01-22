@@ -96,10 +96,11 @@ ORDER BY LotStartTime DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CountWIPTableAdapter" GeneratorDataComponentClassName="CountWIPTableAdapter" Name="CountWIP" UserDataComponentName="CountWIPTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectName="DBx.dbo.TransactionData" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectName="SELECT TransactionData.Package, WBMPPassbox.LotNo /*COUNT(*) AS WIP*/ FROM WBMPPassbox INNER JOIN TransactionData ON WBMPPassbox.LotNo = TransactionData.LotNo WHERE (WBMPPassbox.Remark&lt;&gt;'CANCELWIP' OR Remark IS NULL) AND (WBMPPassbox.LotNo NOT IN (SELECT LotNo FROM MPData)) AND (WBMPPassbox.LotNo NOT IN (SELECT LotNo FROM MPOvenData)) GROUP BY TransactionData.Package,WBMPPassbox.LotNo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        TransactionData.Package, COUNT(*) AS WIP
+                    <CommandText>select tb.Package,COUNT(*) as WIP 
+from (SELECT        TransactionData.Package, WBMPPassbox.LotNo--COUNT(*) AS WIP
 FROM            WBMPPassbox INNER JOIN
                          TransactionData ON WBMPPassbox.LotNo = TransactionData.LotNo
 WHERE      (WBMPPassbox.Remark&lt;&gt;'CANCELWIP' or Remark is null) and   (WBMPPassbox.LotNo NOT IN
@@ -107,7 +108,8 @@ WHERE      (WBMPPassbox.Remark&lt;&gt;'CANCELWIP' or Remark is null) and   (WBMP
                                FROM            MPData)) AND (WBMPPassbox.LotNo NOT IN
                              (SELECT        LotNo
                                FROM            MPOvenData)) 
-GROUP BY TransactionData.Package</CommandText>
+GROUP BY TransactionData.Package,WBMPPassbox.LotNo) as tb
+group by tb.Package</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -233,7 +235,7 @@ SELECT MCNo, LotNo, LotStartTime, OPNoIn, OPNoOut, LotEndTime, ChannelNumber, Ne
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="WBMPPassboxSetting" msprop:Generator_TableClassName="WBMPPassboxSettingDataTable" msprop:Generator_TableVarName="tableWBMPPassboxSetting" msprop:Generator_TablePropName="WBMPPassboxSetting" msprop:Generator_RowDeletingName="WBMPPassboxSettingRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxSettingRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxSettingRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxSettingRowDeleted" msprop:Generator_UserTableName="WBMPPassboxSetting" msprop:Generator_RowChangedName="WBMPPassboxSettingRowChanged" msprop:Generator_RowEvArgName="WBMPPassboxSettingRowChangeEvent" msprop:Generator_RowClassName="WBMPPassboxSettingRow">
+        <xs:element name="WBMPPassboxSetting" msprop:Generator_TableClassName="WBMPPassboxSettingDataTable" msprop:Generator_TableVarName="tableWBMPPassboxSetting" msprop:Generator_RowChangedName="WBMPPassboxSettingRowChanged" msprop:Generator_TablePropName="WBMPPassboxSetting" msprop:Generator_RowDeletingName="WBMPPassboxSettingRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxSettingRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxSettingRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxSettingRowDeleted" msprop:Generator_RowClassName="WBMPPassboxSettingRow" msprop:Generator_UserTableName="WBMPPassboxSetting" msprop:Generator_RowEvArgName="WBMPPassboxSettingRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Package" msprop:Generator_ColumnVarNameInTable="columnPackage" msprop:Generator_ColumnPropNameInRow="Package" msprop:Generator_ColumnPropNameInTable="PackageColumn" msprop:Generator_UserColumnName="Package">
@@ -248,7 +250,7 @@ SELECT MCNo, LotNo, LotStartTime, OPNoIn, OPNoOut, LotEndTime, ChannelNumber, Ne
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="WIPMP" msprop:Generator_TableClassName="WIPMPDataTable" msprop:Generator_TableVarName="tableWIPMP" msprop:Generator_RowChangedName="WIPMPRowChanged" msprop:Generator_TablePropName="WIPMP" msprop:Generator_RowDeletingName="WIPMPRowDeleting" msprop:Generator_RowChangingName="WIPMPRowChanging" msprop:Generator_RowEvHandlerName="WIPMPRowChangeEventHandler" msprop:Generator_RowDeletedName="WIPMPRowDeleted" msprop:Generator_RowClassName="WIPMPRow" msprop:Generator_UserTableName="WIPMP" msprop:Generator_RowEvArgName="WIPMPRowChangeEvent">
+        <xs:element name="WIPMP" msprop:Generator_TableClassName="WIPMPDataTable" msprop:Generator_TableVarName="tableWIPMP" msprop:Generator_TablePropName="WIPMP" msprop:Generator_RowDeletingName="WIPMPRowDeleting" msprop:Generator_RowChangingName="WIPMPRowChanging" msprop:Generator_RowEvHandlerName="WIPMPRowChangeEventHandler" msprop:Generator_RowDeletedName="WIPMPRowDeleted" msprop:Generator_UserTableName="WIPMP" msprop:Generator_RowChangedName="WIPMPRowChanged" msprop:Generator_RowEvArgName="WIPMPRowChangeEvent" msprop:Generator_RowClassName="WIPMPRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LotNo" msprop:Generator_ColumnVarNameInTable="columnLotNo" msprop:Generator_ColumnPropNameInRow="LotNo" msprop:Generator_ColumnPropNameInTable="LotNoColumn" msprop:Generator_UserColumnName="LotNo">
@@ -269,7 +271,7 @@ SELECT MCNo, LotNo, LotStartTime, OPNoIn, OPNoOut, LotEndTime, ChannelNumber, Ne
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CountWIP" msprop:Generator_TableClassName="CountWIPDataTable" msprop:Generator_TableVarName="tableCountWIP" msprop:Generator_RowChangedName="CountWIPRowChanged" msprop:Generator_TablePropName="CountWIP" msprop:Generator_RowDeletingName="CountWIPRowDeleting" msprop:Generator_RowChangingName="CountWIPRowChanging" msprop:Generator_RowEvHandlerName="CountWIPRowChangeEventHandler" msprop:Generator_RowDeletedName="CountWIPRowDeleted" msprop:Generator_RowClassName="CountWIPRow" msprop:Generator_UserTableName="CountWIP" msprop:Generator_RowEvArgName="CountWIPRowChangeEvent">
+        <xs:element name="CountWIP" msprop:Generator_TableClassName="CountWIPDataTable" msprop:Generator_TableVarName="tableCountWIP" msprop:Generator_TablePropName="CountWIP" msprop:Generator_RowDeletingName="CountWIPRowDeleting" msprop:Generator_RowChangingName="CountWIPRowChanging" msprop:Generator_RowEvHandlerName="CountWIPRowChangeEventHandler" msprop:Generator_RowDeletedName="CountWIPRowDeleted" msprop:Generator_UserTableName="CountWIP" msprop:Generator_RowChangedName="CountWIPRowChanged" msprop:Generator_RowEvArgName="CountWIPRowChangeEvent" msprop:Generator_RowClassName="CountWIPRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Package" msprop:Generator_ColumnVarNameInTable="columnPackage" msprop:Generator_ColumnPropNameInRow="Package" msprop:Generator_ColumnPropNameInTable="PackageColumn" msprop:Generator_UserColumnName="Package" minOccurs="0">
@@ -283,7 +285,7 @@ SELECT MCNo, LotNo, LotStartTime, OPNoIn, OPNoOut, LotEndTime, ChannelNumber, Ne
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="WBMPPassbox" msprop:Generator_TableClassName="WBMPPassboxDataTable" msprop:Generator_TableVarName="tableWBMPPassbox" msprop:Generator_TablePropName="WBMPPassbox" msprop:Generator_RowDeletingName="WBMPPassboxRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxRowDeleted" msprop:Generator_UserTableName="WBMPPassbox" msprop:Generator_RowChangedName="WBMPPassboxRowChanged" msprop:Generator_RowEvArgName="WBMPPassboxRowChangeEvent" msprop:Generator_RowClassName="WBMPPassboxRow">
+        <xs:element name="WBMPPassbox" msprop:Generator_TableClassName="WBMPPassboxDataTable" msprop:Generator_TableVarName="tableWBMPPassbox" msprop:Generator_RowChangedName="WBMPPassboxRowChanged" msprop:Generator_TablePropName="WBMPPassbox" msprop:Generator_RowDeletingName="WBMPPassboxRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxRowDeleted" msprop:Generator_RowClassName="WBMPPassboxRow" msprop:Generator_UserTableName="WBMPPassbox" msprop:Generator_RowEvArgName="WBMPPassboxRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MCNo" msprop:Generator_ColumnVarNameInTable="columnMCNo" msprop:Generator_ColumnPropNameInRow="MCNo" msprop:Generator_ColumnPropNameInTable="MCNoColumn" msprop:Generator_UserColumnName="MCNo">

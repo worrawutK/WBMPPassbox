@@ -26,11 +26,11 @@ Partial Class Form2
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbLotNo = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btAddPlan = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.lbLotNo = New System.Windows.Forms.Label()
         Me.DataSet11 = New WipPlanMP.DataSet1()
         Me.WipmpTableAdapter1 = New WipPlanMP.DataSet1TableAdapters.WIPMPTableAdapter()
         Me.CountWIPTableAdapter1 = New WipPlanMP.DataSet1TableAdapters.CountWIPTableAdapter()
@@ -98,6 +98,25 @@ Partial Class Form2
         Me.Panel1.Size = New System.Drawing.Size(1116, 692)
         Me.Panel1.TabIndex = 2
         '
+        'lbLotNo
+        '
+        Me.lbLotNo.AutoSize = True
+        Me.lbLotNo.ForeColor = System.Drawing.Color.White
+        Me.lbLotNo.Location = New System.Drawing.Point(849, 667)
+        Me.lbLotNo.Name = "lbLotNo"
+        Me.lbLotNo.Size = New System.Drawing.Size(159, 13)
+        Me.lbLotNo.TabIndex = 7
+        Me.lbLotNo.Text = "กรุณาเลือก lot ที่จะทำการ Cancel"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(1014, 655)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 30)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Cancel Lot"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -126,25 +145,6 @@ Partial Class Form2
         Me.Button3.Text = "UPDATE"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(1014, 655)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 30)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "Cancel Lot"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'lbLotNo
-        '
-        Me.lbLotNo.AutoSize = True
-        Me.lbLotNo.ForeColor = System.Drawing.Color.White
-        Me.lbLotNo.Location = New System.Drawing.Point(849, 667)
-        Me.lbLotNo.Name = "lbLotNo"
-        Me.lbLotNo.Size = New System.Drawing.Size(159, 13)
-        Me.lbLotNo.TabIndex = 7
-        Me.lbLotNo.Text = "กรุณาเลือก lot ที่จะทำการ Cancel"
-        '
         'DataSet11
         '
         Me.DataSet11.DataSetName = "DataSet1"
@@ -169,10 +169,10 @@ Partial Class Form2
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1360, 768)
         Me.Controls.Add(Me.Panel1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "Form2"
-        Me.Text = "Form2"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "FormWIP"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
