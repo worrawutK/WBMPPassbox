@@ -83,7 +83,7 @@ WHERE        (WBMPPassbox.LotStartTime &gt;= @LotNoStart) AND  (WBMPPassbox.LotS
               <DbSource ConnectionRef="DBxConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillPKG" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillPKG" GetMethodModifier="Public" GetMethodName="GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillPKG">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        TOP (200) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
+                    <CommandText>SELECT        TOP (500) WBMPPassbox.LotNo, TransactionData.Package, TransactionData.Device, WBMPPassbox.LotStartTime, WBMPPassbox.OPNoIn, 
                          WBMPPassbox.OPNoOut, WBMPPassbox.LotEndTime, WBMPPassbox.ChannelNumber, WBMPPassbox.Remark, WBMPPassbox.MCNo
 FROM            TransactionData INNER JOIN
                          WBMPPassbox ON TransactionData.LotNo = WBMPPassbox.LotNo
@@ -105,7 +105,7 @@ ORDER BY WBMPPassbox.LotStartTime DESC</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="WBMPPassbox" msprop:Generator_TableClassName="WBMPPassboxDataTable" msprop:Generator_TableVarName="tableWBMPPassbox" msprop:Generator_RowChangedName="WBMPPassboxRowChanged" msprop:Generator_TablePropName="WBMPPassbox" msprop:Generator_RowDeletingName="WBMPPassboxRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxRowDeleted" msprop:Generator_RowClassName="WBMPPassboxRow" msprop:Generator_UserTableName="WBMPPassbox" msprop:Generator_RowEvArgName="WBMPPassboxRowChangeEvent">
+        <xs:element name="WBMPPassbox" msprop:Generator_TableClassName="WBMPPassboxDataTable" msprop:Generator_TableVarName="tableWBMPPassbox" msprop:Generator_TablePropName="WBMPPassbox" msprop:Generator_RowDeletingName="WBMPPassboxRowDeleting" msprop:Generator_RowChangingName="WBMPPassboxRowChanging" msprop:Generator_RowEvHandlerName="WBMPPassboxRowChangeEventHandler" msprop:Generator_RowDeletedName="WBMPPassboxRowDeleted" msprop:Generator_UserTableName="WBMPPassbox" msprop:Generator_RowChangedName="WBMPPassboxRowChanged" msprop:Generator_RowEvArgName="WBMPPassboxRowChangeEvent" msprop:Generator_RowClassName="WBMPPassboxRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LotNo" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="LotNo" msprop:Generator_ColumnVarNameInTable="columnLotNo" msprop:Generator_ColumnPropNameInTable="LotNoColumn" msprop:Generator_UserColumnName="LotNo">

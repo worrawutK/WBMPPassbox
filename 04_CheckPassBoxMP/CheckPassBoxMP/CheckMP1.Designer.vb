@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btSearch = New System.Windows.Forms.Button()
         Me.tbSearch = New System.Windows.Forms.TextBox()
         Me.lbNameSearch = New System.Windows.Forms.Label()
@@ -35,6 +35,17 @@ Partial Class Form1
         Me.rbLotNo = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Process_HistoryDataGridView = New System.Windows.Forms.DataGridView()
+        Me.LotNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PackageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeviceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotStartTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotEndTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPNoInDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OPNoOutDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ChannelNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MCNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WBMPPassboxBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataSet1 = New CheckPassBoxMP.DataSet1()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -50,26 +61,15 @@ Partial Class Form1
         Me.PB06ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PB07ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.LotNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PackageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DeviceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotStartTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotEndTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPNoInDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OPNoOutDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ChannelNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MCNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WBMPPassboxBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataSet1 = New CheckPassBoxMP.DataSet1()
         Me.WbmpPassboxTableAdapter1 = New CheckPassBoxMP.DataSet1TableAdapters.WBMPPassboxTableAdapter()
         CType(Me.Process_HistoryDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WBMPPassboxBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.WBMPPassboxBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btSearch
@@ -173,30 +173,104 @@ Partial Class Form1
         Me.Process_HistoryDataGridView.AllowUserToDeleteRows = False
         Me.Process_HistoryDataGridView.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Process_HistoryDataGridView.AutoGenerateColumns = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Process_HistoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Process_HistoryDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.Process_HistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Process_HistoryDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.LotNoDataGridViewTextBoxColumn, Me.PackageDataGridViewTextBoxColumn, Me.DeviceDataGridViewTextBoxColumn, Me.LotStartTimeDataGridViewTextBoxColumn, Me.LotEndTimeDataGridViewTextBoxColumn, Me.OPNoInDataGridViewTextBoxColumn, Me.OPNoOutDataGridViewTextBoxColumn, Me.ChannelNumberDataGridViewTextBoxColumn, Me.MCNoDataGridViewTextBoxColumn})
         Me.Process_HistoryDataGridView.DataSource = Me.WBMPPassboxBindingSource
         Me.Process_HistoryDataGridView.Location = New System.Drawing.Point(33, 240)
         Me.Process_HistoryDataGridView.Name = "Process_HistoryDataGridView"
         Me.Process_HistoryDataGridView.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Process_HistoryDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Process_HistoryDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Process_HistoryDataGridView.Size = New System.Drawing.Size(1009, 395)
         Me.Process_HistoryDataGridView.TabIndex = 7
+        '
+        'LotNoDataGridViewTextBoxColumn
+        '
+        Me.LotNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.LotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo"
+        Me.LotNoDataGridViewTextBoxColumn.HeaderText = "LotNo"
+        Me.LotNoDataGridViewTextBoxColumn.Name = "LotNoDataGridViewTextBoxColumn"
+        Me.LotNoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PackageDataGridViewTextBoxColumn
+        '
+        Me.PackageDataGridViewTextBoxColumn.DataPropertyName = "Package"
+        Me.PackageDataGridViewTextBoxColumn.HeaderText = "Package"
+        Me.PackageDataGridViewTextBoxColumn.Name = "PackageDataGridViewTextBoxColumn"
+        Me.PackageDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DeviceDataGridViewTextBoxColumn
+        '
+        Me.DeviceDataGridViewTextBoxColumn.DataPropertyName = "Device"
+        Me.DeviceDataGridViewTextBoxColumn.HeaderText = "Device"
+        Me.DeviceDataGridViewTextBoxColumn.Name = "DeviceDataGridViewTextBoxColumn"
+        Me.DeviceDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LotStartTimeDataGridViewTextBoxColumn
+        '
+        Me.LotStartTimeDataGridViewTextBoxColumn.DataPropertyName = "LotStartTime"
+        Me.LotStartTimeDataGridViewTextBoxColumn.HeaderText = "LotStartTime"
+        Me.LotStartTimeDataGridViewTextBoxColumn.Name = "LotStartTimeDataGridViewTextBoxColumn"
+        Me.LotStartTimeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LotEndTimeDataGridViewTextBoxColumn
+        '
+        Me.LotEndTimeDataGridViewTextBoxColumn.DataPropertyName = "LotEndTime"
+        Me.LotEndTimeDataGridViewTextBoxColumn.HeaderText = "LotEndTime"
+        Me.LotEndTimeDataGridViewTextBoxColumn.Name = "LotEndTimeDataGridViewTextBoxColumn"
+        Me.LotEndTimeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'OPNoInDataGridViewTextBoxColumn
+        '
+        Me.OPNoInDataGridViewTextBoxColumn.DataPropertyName = "OPNoIn"
+        Me.OPNoInDataGridViewTextBoxColumn.HeaderText = "OPNoIn"
+        Me.OPNoInDataGridViewTextBoxColumn.Name = "OPNoInDataGridViewTextBoxColumn"
+        Me.OPNoInDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'OPNoOutDataGridViewTextBoxColumn
+        '
+        Me.OPNoOutDataGridViewTextBoxColumn.DataPropertyName = "OPNoOut"
+        Me.OPNoOutDataGridViewTextBoxColumn.HeaderText = "OPNoOut"
+        Me.OPNoOutDataGridViewTextBoxColumn.Name = "OPNoOutDataGridViewTextBoxColumn"
+        Me.OPNoOutDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ChannelNumberDataGridViewTextBoxColumn
+        '
+        Me.ChannelNumberDataGridViewTextBoxColumn.DataPropertyName = "ChannelNumber"
+        Me.ChannelNumberDataGridViewTextBoxColumn.HeaderText = "ChannelNumber"
+        Me.ChannelNumberDataGridViewTextBoxColumn.Name = "ChannelNumberDataGridViewTextBoxColumn"
+        Me.ChannelNumberDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MCNoDataGridViewTextBoxColumn
+        '
+        Me.MCNoDataGridViewTextBoxColumn.DataPropertyName = "MCNo"
+        Me.MCNoDataGridViewTextBoxColumn.HeaderText = "MCNo"
+        Me.MCNoDataGridViewTextBoxColumn.Name = "MCNoDataGridViewTextBoxColumn"
+        Me.MCNoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'WBMPPassboxBindingSource
+        '
+        Me.WBMPPassboxBindingSource.DataMember = "WBMPPassbox"
+        Me.WBMPPassboxBindingSource.DataSource = Me.DataSet1
+        '
+        'DataSet1
+        '
+        Me.DataSet1.DataSetName = "DataSet1"
+        Me.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'PictureBox1
         '
@@ -328,80 +402,6 @@ Partial Class Form1
         Me.Panel3.TabIndex = 18
         Me.Panel3.Visible = False
         '
-        'LotNoDataGridViewTextBoxColumn
-        '
-        Me.LotNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.LotNoDataGridViewTextBoxColumn.DataPropertyName = "LotNo"
-        Me.LotNoDataGridViewTextBoxColumn.HeaderText = "LotNo"
-        Me.LotNoDataGridViewTextBoxColumn.Name = "LotNoDataGridViewTextBoxColumn"
-        Me.LotNoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PackageDataGridViewTextBoxColumn
-        '
-        Me.PackageDataGridViewTextBoxColumn.DataPropertyName = "Package"
-        Me.PackageDataGridViewTextBoxColumn.HeaderText = "Package"
-        Me.PackageDataGridViewTextBoxColumn.Name = "PackageDataGridViewTextBoxColumn"
-        Me.PackageDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DeviceDataGridViewTextBoxColumn
-        '
-        Me.DeviceDataGridViewTextBoxColumn.DataPropertyName = "Device"
-        Me.DeviceDataGridViewTextBoxColumn.HeaderText = "Device"
-        Me.DeviceDataGridViewTextBoxColumn.Name = "DeviceDataGridViewTextBoxColumn"
-        Me.DeviceDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LotStartTimeDataGridViewTextBoxColumn
-        '
-        Me.LotStartTimeDataGridViewTextBoxColumn.DataPropertyName = "LotStartTime"
-        Me.LotStartTimeDataGridViewTextBoxColumn.HeaderText = "LotStartTime"
-        Me.LotStartTimeDataGridViewTextBoxColumn.Name = "LotStartTimeDataGridViewTextBoxColumn"
-        Me.LotStartTimeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LotEndTimeDataGridViewTextBoxColumn
-        '
-        Me.LotEndTimeDataGridViewTextBoxColumn.DataPropertyName = "LotEndTime"
-        Me.LotEndTimeDataGridViewTextBoxColumn.HeaderText = "LotEndTime"
-        Me.LotEndTimeDataGridViewTextBoxColumn.Name = "LotEndTimeDataGridViewTextBoxColumn"
-        Me.LotEndTimeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'OPNoInDataGridViewTextBoxColumn
-        '
-        Me.OPNoInDataGridViewTextBoxColumn.DataPropertyName = "OPNoIn"
-        Me.OPNoInDataGridViewTextBoxColumn.HeaderText = "OPNoIn"
-        Me.OPNoInDataGridViewTextBoxColumn.Name = "OPNoInDataGridViewTextBoxColumn"
-        Me.OPNoInDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'OPNoOutDataGridViewTextBoxColumn
-        '
-        Me.OPNoOutDataGridViewTextBoxColumn.DataPropertyName = "OPNoOut"
-        Me.OPNoOutDataGridViewTextBoxColumn.HeaderText = "OPNoOut"
-        Me.OPNoOutDataGridViewTextBoxColumn.Name = "OPNoOutDataGridViewTextBoxColumn"
-        Me.OPNoOutDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ChannelNumberDataGridViewTextBoxColumn
-        '
-        Me.ChannelNumberDataGridViewTextBoxColumn.DataPropertyName = "ChannelNumber"
-        Me.ChannelNumberDataGridViewTextBoxColumn.HeaderText = "ChannelNumber"
-        Me.ChannelNumberDataGridViewTextBoxColumn.Name = "ChannelNumberDataGridViewTextBoxColumn"
-        Me.ChannelNumberDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MCNoDataGridViewTextBoxColumn
-        '
-        Me.MCNoDataGridViewTextBoxColumn.DataPropertyName = "MCNo"
-        Me.MCNoDataGridViewTextBoxColumn.HeaderText = "MCNo"
-        Me.MCNoDataGridViewTextBoxColumn.Name = "MCNoDataGridViewTextBoxColumn"
-        Me.MCNoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'WBMPPassboxBindingSource
-        '
-        Me.WBMPPassboxBindingSource.DataMember = "WBMPPassbox"
-        Me.WBMPPassboxBindingSource.DataSource = Me.DataSet1
-        '
-        'DataSet1
-        '
-        Me.DataSet1.DataSetName = "DataSet1"
-        Me.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'WbmpPassboxTableAdapter1
         '
         Me.WbmpPassboxTableAdapter1.ClearBeforeFill = True
@@ -429,6 +429,8 @@ Partial Class Form1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pass Box Cellcon"
         CType(Me.Process_HistoryDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WBMPPassboxBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -438,8 +440,6 @@ Partial Class Form1
         Me.MenuStrip1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.WBMPPassboxBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

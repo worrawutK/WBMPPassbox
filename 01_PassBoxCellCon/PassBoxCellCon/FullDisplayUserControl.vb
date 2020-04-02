@@ -536,5 +536,7 @@ Public Class FullDisplayUserControl
         GetData1(False)
     End Sub
 
+    Private Sub UserControlPassBox5_Load(sender As Object, e As EventArgs) Handles UserControlPassBox5.Load
 
+    End Sub
 End Class
