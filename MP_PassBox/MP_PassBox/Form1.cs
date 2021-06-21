@@ -120,8 +120,15 @@ namespace MP_PassBox
                             c_PassBox.LotNo = row2.LotNo;
                             //c_PassBox.BgColor = Color.LightBlue;
                             c_PassBox.channel = row2.ChannelNumber;
-                            c_PassBox.In_Date = row2.IN_DAY;
-                            c_PassBox.Out_Date = row2.OUT_DAY;
+                            if (!row2.IsIN_DAYNull())
+                            {
+                               //string year =  row2.LotNo.Substring(0, 2);
+                                c_PassBox.In_Date = row2.IN_DAY;
+                            }
+                            else{c_PassBox.In_Date = "-";}
+                            if (!row2.IsOUT_DAYNull()) { c_PassBox.Out_Date = row2.OUT_DAY; }
+                            else { c_PassBox.Out_Date = "-"; }
+
                             c_PassBox.Package = row2.Package;
                             c_PassBox.EndTimeBeforeProcess = row2.EndTimeBeforeProcess;
                             c_PassBox.Queue = count;

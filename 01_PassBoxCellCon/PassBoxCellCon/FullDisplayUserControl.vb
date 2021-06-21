@@ -442,7 +442,7 @@ Public Class FullDisplayUserControl
         'Return "Data Source=CLIENT-205\SQLEXPRESS;Initial Catalog=DBTest;Integrated Security=False;User ID=sa;Password=1234"
         '172.16.0.102;Initial Catalog=DBx;User ID=dbxuser
         ' Return "Data Source=172.16.0.102;Initial Catalog=DBx;User ID=sa;Password=5dcda45fc424*"
-        Return "Data Source=172.16.0.102;Initial Catalog=DBx;Persist Security Info=True;User ID=sa;Password=5dcda45fc424*"
+        Return "Data Source=172.16.0.110;Initial Catalog=DBx;Persist Security Info=True;User ID=system;Password=p@$$w0rd"
         ' Return "Data Source=172.16.0.102;Initial Catalog=DBxDW;Persist Security Info=True;User ID=sa;Password=5dcda45fc424*"
     End Function
     Private Function GetSQLTest() As String
