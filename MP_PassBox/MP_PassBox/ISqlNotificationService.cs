@@ -71,7 +71,7 @@ namespace MP_PassBox
                     TableDataSet = dataToWatch
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

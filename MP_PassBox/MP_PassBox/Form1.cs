@@ -10,6 +10,8 @@ using System.Drawing;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.IO.StreamWriter;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace MP_PassBox
 {
@@ -28,6 +30,7 @@ namespace MP_PassBox
 
         private void Frm_Main_Load(object sender, EventArgs e)
         {
+           
             checkLogin = false;
             showPassBox();
             lblMC.Text = "-";
@@ -40,7 +43,7 @@ namespace MP_PassBox
             c_Resize.FindAllControls(this);
             //XmlSave.SaveData(Settings.Default.MCNo, @"C:\Users\user454\Desktop\Witchaya M\MP_PassBox\MP_PassBox\bin\Debug\MCName.xml");
         }
-
+      
         private SqlNotificationService service;
         private void SqlNotificationService()
         {

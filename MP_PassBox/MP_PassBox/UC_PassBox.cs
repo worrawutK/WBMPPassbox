@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MP_PassBox
 {
@@ -76,7 +78,32 @@ namespace MP_PassBox
             }
             
         }
-
+        private DateTime GetData()
+        {
+            DataTable dataTable = new DataTable();
+            DateTime server = DateTime.Now;
+            try
+            {
+                using (SqlConnection sql = new SqlConnection("Data Source=172.16.0.102;Initial Catalog=DBx;User ID=system;Password=p@$$w0rd"))
+                {
+                    SqlCommand cmd = new SqlCommand("select GetDate() as serverTime", sql);
+                    cmd.Connection.Open();
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    dataTable.Load(rd);
+                    foreach (DataRow item in dataTable.Rows)
+                    {
+                        server = (DateTime)item["serverTime"];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                addlogfile("GetDateTime:" + ex.Message.ToString());
+                MessageBox.Show("GetDateTime:" + ex.Message.ToString());
+            }
+          
+            return server;
+        }
         DataSetPassBox.WBMPPassboxDataTable wBMP;
         DataSetPassBoxTableAdapters.WBMPPassboxTableAdapter adapter;
         
@@ -97,7 +124,7 @@ namespace MP_PassBox
 
                 {
                     Frm_Main f2 = new Frm_Main();
-                    row.LotEndTime = DateTime.Now;
+                    row.LotEndTime = GetData();
                     row.OPNoOut = ParameterPB.OP;
                     adapter.Update(wBMP);
                     
