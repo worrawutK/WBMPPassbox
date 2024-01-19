@@ -30,7 +30,14 @@ namespace MP_PassBox
 
         private void Frm_Main_Load(object sender, EventArgs e)
         {
-           
+            string size = AppSettingHelper.GetAppSettingsValue("size");
+            if (size == "6")
+            {
+                Form6 form6 = new Form6();
+                form6.Show();
+                this.Hide();
+                return;
+            }
             checkLogin = false;
             showPassBox();
             lblMC.Text = "-";
